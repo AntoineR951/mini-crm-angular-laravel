@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 12px 0;
+  justify-content: space-between;
+
+  h2 {
+    margin: 0;
+    font-weight: 600;
+  }
+}
+
+.table-wrap {
+  overflow: auto;
+  padding: 12px;
+}
+
+table {
+  width: 100%;
+  background: var(--mat-sys-surface);
+  border-radius: 12px;
+}
+
+th.mat-header-cell, td.mat-cell {
+  padding: 12px 16px;
+}
+
+.col-actions {
+  width: 120px;
+  text-align: right;
+
+  button + button {
+    margin-left: 4px;
+  }
+}
+
+.empty td {
+  text-align: center;
+  padding: 24px;
+  opacity: .7;
+}
