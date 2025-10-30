@@ -1,11 +1,13 @@
-// Thème Angular Material v18 (Material 3) – doit être tout en haut
 @use '@angular/material' as mat;
+
+@include mat.core();
 
 html {
   @include mat.theme((
     color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
+      theme-type: light,
+      primary: mat.$blue-palette,
+      tertiary: mat.$cyan-palette,
     ),
     typography: Roboto,
     density: 0,
@@ -14,13 +16,103 @@ html {
 
 body {
   color-scheme: light;
-  background-color: var(--mat-sys-surface);
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent 55%),
+              radial-gradient(circle at bottom right, rgba(14, 116, 144, 0.12), transparent 45%),
+              var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
-  margin: 0; // reset
+  margin: 0;
+  min-height: 100%;
 }
 
 /* Globaux */
 html, body { height: 100%; }
 body { font-family: Roboto, "Helvetica Neue", Arial, sans-serif; }
-.container { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+.container {
+  max-width: 1100px;
+  margin: 32px auto 48px;
+  padding: 0 20px;
+}
+
+mat-toolbar {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--mat-sys-primary) 85%, black 5%), color-mix(in srgb, var(--mat-sys-primary-container) 75%, white 5%));
+  color: var(--mat-sys-on-primary);
+  border-bottom: 1px solid color-mix(in srgb, var(--mat-sys-primary) 20%, transparent);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.15);
+}
+
+mat-toolbar a[mat-button] {
+  color: inherit;
+  font-weight: 500;
+  letter-spacing: .2px;
+}
+
+mat-toolbar a[mat-button] mat-icon {
+  margin-right: 6px;
+  font-size: 20px;
+}
+
+button[mat-flat-button],
+button[mat-raised-button] {
+  --mdc-filled-button-container-color: var(--mat-sys-primary);
+  --mdc-filled-button-label-text-color: var(--mat-sys-on-primary);
+  --mdc-filled-button-label-text-font: var(--mat-sys-label-large-font);
+  border-radius: 999px;
+  padding: 0 22px;
+  font-weight: 600;
+  letter-spacing: .3px;
+  box-shadow: 0 12px 20px rgba(37, 99, 235, 0.25);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+button[mat-flat-button]:hover,
+button[mat-raised-button]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(37, 99, 235, 0.25);
+}
+
+button[mat-icon-button] {
+  color: var(--mat-sys-on-surface-variant);
+  transition: color .2s ease, background-color .2s ease;
+}
+
+button[mat-icon-button]:hover {
+  color: var(--mat-sys-primary);
+  background-color: rgba(37, 99, 235, 0.08);
+}
+
+button[mat-icon-button][color="warn"]:hover {
+  color: var(--mat-sys-on-error);
+  background-color: rgba(220, 38, 38, 0.1);
+}
+
+mat-card {
+  border-radius: 20px;
+  border: 1px solid color-mix(in srgb, var(--mat-sys-outline-variant) 70%, transparent);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(4px);
+}
+
+.mat-mdc-snack-bar-container {
+  --mdc-snackbar-container-color: color-mix(in srgb, var(--mat-sys-inverse-surface) 92%, black 8%);
+  --mdc-snackbar-supporting-text-color: var(--mat-sys-inverse-on-surface);
+  --mdc-snackbar-action-label-text-color: var(--mat-sys-primary-container);
+  --mdc-snackbar-container-shape: 14px;
+  border: 1px solid color-mix(in srgb, var(--mat-sys-inverse-surface) 40%, transparent);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.22);
+  padding: 8px 16px;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__label {
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+}
+
+.mat-mdc-snack-bar-container .mdc-button__label {
+  font-weight: 600;
+}
+
+.mat-tooltip {
+  font-size: 12px;
+  padding: 6px 10px;
+}
